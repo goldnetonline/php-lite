@@ -1,11 +1,11 @@
 <?php
 /*
  * File: routes.php
- * Project: arcinteriordesigns
+ * Project: app
  * File Created: Tuesday, 15th September 2020 2:02:18 pm
  * Author: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
- * Last Modified: Monday, 24th May 2021 12:26:04 am
+ * Last Modified: Tuesday, 1st June 2021 11:44:06 am
  * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
  * Copyright 2021, CamelCase Technologies Ltd
@@ -24,9 +24,10 @@ return [
             "message" => "Orage is the new black",
         ]);
     },
-    'array' => [
+    'post,get|array' => [
         "status" => false,
         "issue" => "Server fault",
     ],
-    'controller' => [\App\Controllers\MainController::class, 'controller'],
+    'post,get|controller' => [\App\Controllers\MainController::class, 'controller'],
+    'post|contact' => [\App\Controllers\MainController::class, 'contact'],
 ];

@@ -5,7 +5,7 @@
  * File Created: Sunday, 23rd May 2021 7:45:39 pm
  * Author: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
- * Last Modified: Monday, 24th May 2021 2:10:23 am
+ * Last Modified: Monday, 24th May 2021 2:29:07 am
  * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
  * Copyright 2021, CamelCase Technologies Ltd
@@ -50,12 +50,7 @@ if (!function_exists('config')) {
 if (!function_exists('input')) {
     function input($key = null, $default = null)
     {
-        $allInput = $_REQUEST + $_QUERY;
-        if (!$key) {
-            return $allInput;
-        }
-
-        return $allConfig[$key] ?? $default;
+        return $app->request->input($key, $default);
     }
 }
 

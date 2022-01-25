@@ -5,7 +5,7 @@
  * File Created: Sunday, 23rd May 2021 7:03:50 pm
  * Author: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
- * Last Modified: Tuesday, 25th January 2022 11:12:30 am
+ * Last Modified: Tuesday, 25th January 2022 11:27:58 am
  * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
  * Copyright 2022, CamelCase Technologies Ltd
@@ -23,6 +23,7 @@ class App
     public $request;
     public $response;
     public $view;
+    public $routeManager;
     public $baseDir;
     public $pageDir;
     public $isPageFile = false;
@@ -78,7 +79,17 @@ class App
             return $_ENV;
         }
 
-        return $_ENV[$key] ?? $default;
+        $env = $_ENV[$key] ?? $default;
+        if (in_array($env, ['true', 'false'])) {
+            if ($env === 'true') {
+                $env = true;
+            } else {
+                $env = false;
+            }
+
+        }
+        return $env;
+
     }
 
     /**
@@ -87,7 +98,7 @@ class App
     public function getStaticPageDir(): string
     {
         if (!$this->pageDir) {
-            $this->pageDir = preg_replace("/\/$/", '', $this->getConfig('view_dir'));
+            $this->pageDir = preg_replace("/\/$/", '', $this->getConfig('view.view_dir'));
         }
 
         return $this->pageDir;
@@ -96,29 +107,9 @@ class App
     /**
      * Get the static page for the home page
      */
-    public function getHomeStaticPage(): string
+    public function getHomeStaticPage(): ?string
     {
-        return $this->getConfig('homepage');
-    }
-
-    /**
-     * Get all dynamic routes
-     */
-    public function getRoutes(): array
-    {
-        if ($this->routes) {
-            return $this->routes;
-        }
-
-        $routeFile = $this->getConfig('route_file');
-
-        if ($routeFile && \file_exists($routeFile)) {
-            $this->routes = include_once $routeFile;
-        } else {
-            $this->routes = [];
-        }
-
-        return $this->routes;
+        return $this->getConfig('view.homepage', null);
     }
 
     /**
@@ -146,7 +137,7 @@ class App
      */
     private function maintenanceMode()
     {
-        if (!$this->getConfig('maintenance_mode')) {
+        if (!$this->getConfig('app.maintenance_mode')) {
             return $this;
         }
 
@@ -160,13 +151,13 @@ class App
     {
         $staticPath = null;
 
-        if ($this->request->slug === '/') {
-
+        if ($this->request->slug === '-') {
             $homePage = $this->getHomeStaticPage();
 
             if ($homePage) {
                 $staticPath = $homePage;
             }
+
         } else {
             $staticPath = $this->request->slug;
         }
@@ -176,6 +167,7 @@ class App
             $pageFile = $this->getStaticPage($staticPath);
 
             if ($pageFile) {
+
                 try {
                     $this->response->html($this->view->make($pageFile));
                     $this->isPageFile = true;
@@ -184,7 +176,7 @@ class App
                     // @todo
                     // Log the error
 
-                    if (!$this->getConfig('debug')) {
+                    if (!$this->getConfig('app.debug')) {
                         //I dont care, throw 500 Error
                         return $this->abort(500);
                     }
@@ -211,42 +203,47 @@ class App
             return $this;
         }
 
-        $this->getRoutes();
+        $routeHandler = $this->routeManager->getRouteHandler($this->request);
 
-        if (!sizeOf($this->routes)) {
+        if (!$routeHandler) {
             return $this;
         }
 
-        // Keep it simple
-        if (!isset($this->routes[$this->request->uri])) {
-            return $this;
-        }
+        return $this->processRouteHandler($routeHandler);
 
-        $route = $this->routes[$this->request->uri];
+    }
+
+    /**
+     * Process a route handler
+     *
+     * @param mixed $handler    The route handler can be anything from sring, array or closure
+     * @return mixed            Response string
+     */
+    private function processRouteHandler($handler)
+    {
         $doRoute = null;
-        if ($route instanceof \Closure) {
-            $doRoute = $route($this->request, $this->response);
-        } elseif (is_array($route)) {
-            if (isset($route[0]) && \class_exists($route[0])) {
-                $controller = new $route[0]($this);
+        if ($handler instanceof \Closure) {
+            $doRoute = $handler($this->request, $this->response);
+        } elseif (is_array($handler)) {
+            if (isset($handler[0]) && \class_exists($handler[0])) {
+                $controller = new $handler[0]($this);
                 // If this is not set, then __invoke on the controller will be called
                 if (
-                    isset($route[1])
-                    && !empty($route[1])
-                    && is_string($route[1])
+                    isset($handler[1])
+                    && !empty($handler[1])
+                    && is_string($handler[1])
                 ) {
-                    if (!\method_exists($controller, $route[1])) {
+                    if (!\method_exists($controller, $handler[1])) {
                         return $this->abort();
                     }
-                    $doRoute = $controller->{$route[1]}();
+                    $doRoute = $controller->{$handler[1]}();
 
                 } else {
                     // This man must be using invoker
                     $doRoute = $controller;
                 }
             } else {
-
-                $doRoute = $this->response->json($route);
+                $doRoute = $this->response->json($handler);
             }
         }
 
@@ -277,7 +274,11 @@ class App
 
         $html = "<h1>$code Error</h1>";
         if ($errorPage) {
-            $html = \file_get_contents($errorPage);
+            try {
+                $html = $this->view->make($errorPage);
+            } catch (\Throwable $th) {
+                $html = \file_get_contents($errorPage);
+            }
         }
 
         $this->response->html($html, $code)->send();
@@ -286,19 +287,41 @@ class App
     public function run()
     {
         // Set debug after app is initialized
-        $this->debug = $this->getConfig('debug');
-        $this->globalContext = $this->getConfig('global_context');
+        $this->debug = $this->getConfig('app.debug');
 
-        // Configure view renderer
-        $this->view->configure();
+        $whoops = new \Whoops\Run;
+        $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 
-        $this->maintenanceMode()->loadPageManager()->loadRouters();
-
-        if (!$this->response->responseText) {
-            return $this->abort();
+        if (!$this->debug) {
+            $whoops->allowQuit(false);
+            $whoops->writeToOutput(false);
         }
 
-        return $this->response->send();
+        try {
+            // Load the route managers
+            $this->routeManager = RouteManager::getInstance($this);
+            $this->globalContext = $this->getConfig('view.global_context');
+
+            // Configure view renderer
+            $this->view->configure();
+
+            $this->maintenanceMode()->loadPageManager()->loadRouters();
+
+            if (!$this->response->responseText) {
+                return $this->abort();
+            }
+
+            return $this->response->send();
+
+        } catch (\Throwable $th) {
+            if (!$this->debug) {
+                $this->abort(500);
+            } else {
+                $this->response->html($whoops->handleException($th), 500)->send();
+            }
+
+        }
+
     }
 
 }

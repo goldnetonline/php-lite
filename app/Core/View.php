@@ -1,11 +1,11 @@
 <?php
 /*
  * File: View.php
- * Project: core
+ * Project: Core
  * File Created: Sunday, 23rd May 2021 9:47:39 pm
  * Author: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
- * Last Modified: Monday, 24th May 2021 2:21:27 am
+ * Last Modified: Tuesday, 1st June 2021 10:52:00 am
  * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
  * Copyright 2021, CamelCase Technologies Ltd
@@ -24,6 +24,7 @@ class View
     public $cacheRoot;
     private $twigLoader;
     private $twigInstance;
+    private $viewDirRoot;
 
     public function __construct($app)
     {
@@ -33,7 +34,8 @@ class View
 
     public function configure()
     {
-        $this->twigLoader = new FilesystemLoader($this->app->getConfig('view_dir'));
+        $this->viewDirRoot = $this->app->getConfig('view.view_dir');
+        $this->twigLoader = new FilesystemLoader($this->viewDirRoot);
         $this->twigInstance = new Environment($this->twigLoader, [
             'cache' => $this->cacheRoot,
             'auto_reload' => true,
@@ -44,7 +46,9 @@ class View
     public function findFile(string $file): ?string
     {
         $pageFile = null;
-        if (\file_exists($file . ".html")) {
+        if (\file_exists($file)) {
+            $pageFile = $file;
+        } elseif (\file_exists($file . ".html")) {
             $pageFile = $file . ".html";
         } elseif (\file_exists($file . ".htm")) {
             $pageFile = $file . ".htm";
@@ -60,6 +64,6 @@ class View
     {
         $context = array_merge($this->app->globalContext, $context);
         // Remove absolte path
-        return $this->twigInstance->render(basename($path), $context);
+        return $this->twigInstance->render(str_replace($this->viewDirRoot, '', $path), $context);
     }
 }

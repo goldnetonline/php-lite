@@ -1,14 +1,14 @@
 <?php
 /*
  * File: Request.php
- * Project: Core
+ * Project: core
  * File Created: Sunday, 23rd May 2021 8:22:46 pm
  * Author: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
- * Last Modified: Tuesday, 25th January 2022 11:10:51 am
+ * Last Modified: Tuesday, 1st June 2021 9:37:28 am
  * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
- * Copyright 2022, CamelCase Technologies Ltd
+ * Copyright 2021, CamelCase Technologies Ltd
  */
 
 namespace App\Core;
@@ -38,8 +38,12 @@ class Request
     public function __construct($app)
     {
         $this->server = $_SERVER;
-        $uri = $this->server['PHP_SELF'];
-        $this->uri = $uri === "/" ? $uri : \preg_replace("/\/$/", '', $this->server['PHP_SELF']);
+
+        $uri = urldecode(
+            parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
+        );
+
+        $this->uri = $uri === "/" ? $uri : \preg_replace("/\/$/", '', $uri);
         if ($this->uri !== '/') {
             $this->uri = \preg_replace("/^\//", '', $this->uri);
         }
@@ -47,18 +51,15 @@ class Request
         $this->url = $this->server['REQUEST_URI'];
         $this->app = $app;
 
-        // Why?
-        // $this->slug = \preg_replace('/[_|\s|\/]/', '-', $this->uri);
+        $this->slug = \preg_replace('/[_|\s|\/]/', '-', $this->uri);
 
-        $this->slug = $this->uri;
-
-        $this->host = $this->server['HTTP_HOST'] ?? null;
+        $this->host = $this->server['HTTP_HOST'];
         $this->https = isset($this->server['HTTPS']) && $this->server['HTTPS'] === 'on' ? true : false;
-        $this->port = $this->server['SERVER_PORT'] ?? null;
-        $this->serverIp = $this->server['SERVER_ADDR'] ?? null;
-        $this->requestIp = $this->server['REMOTE_ADDR'] ?? null;
-        $this->method = $this->server['REQUEST_METHOD'] ?? null;
-        $this->rawQueryString = $this->server['QUERY_STRING'] ?? null;
+        $this->port = $this->server['SERVER_PORT'];
+        $this->serverIp = $this->server['SERVER_ADDR'];
+        $this->requestIp = $this->server['REMOTE_ADDR'];
+        $this->method = $this->server['REQUEST_METHOD'];
+        $this->rawQueryString = $this->server['QUERY_STRING'];
         $this->queryStringArray = $this->parseQueryString($this->rawQueryString);
     }
 
@@ -110,8 +111,6 @@ class Request
         }
 
         return $this->all()[$key] ?? $default;
-
-        return input($key, $default);
     }
 
     /**
@@ -136,6 +135,22 @@ class Request
     {
         $accept = explode(",", $this->server['HTTP_ACCEPT']);
         return $accept[$key] ? true : false;
+    }
+
+    /**
+     * Check if the request is Ajax
+     */
+    public function isAjax(): bool
+    {
+
+    }
+
+    /**
+     * Debug the request
+     */
+    public function dump()
+    {
+        return dd($this);
     }
 
 }

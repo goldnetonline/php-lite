@@ -5,7 +5,7 @@
  * File Created: Sunday, 23rd May 2021 8:00:46 pm
  * Author: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
- * Last Modified: Tuesday, 25th January 2022 11:14:04 am
+ * Last Modified: Tuesday, 25th January 2022 11:23:29 am
  * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
  * Copyright 2022, CamelCase Technologies Ltd
@@ -31,11 +31,19 @@ return [
         'homepage' => 'home.html',
 
         // Where all custom twig views are loaded from
-        'view_dir' => BASE_DIR . '/pages',
+        'view_dir' => BASE_DIR . '/views/pages',
 
         // These are extra data attached to all views
         'global_context' => [
             'year' => date('Y'),
+            'team' => [
+                'Arch. Anu Adeosun' => 'Lead Design Architect',
+                'Arch. Bolaji Olowolabayaki' => 'Deputy Lead Design Architect',
+                'Yewande Afinowi' => 'Human Resources Supervisor',
+                'Kazeem Lawal' => 'Chief Financial Officer',
+                'Arch. Shittu Ade' => 'Project Manager (Lagos)',
+                'Henry Ofori ' => 'Project Manager (Ghana)',
+            ],
         ],
     ],
 
