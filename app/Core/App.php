@@ -5,7 +5,7 @@
  * File Created: Sunday, 23rd May 2021 7:03:50 pm
  * Author: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
- * Last Modified: Tuesday, 25th January 2022 11:27:58 am
+ * Last Modified: Monday, 31st January 2022 1:35:48 pm
  * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
  * Copyright 2022, CamelCase Technologies Ltd
@@ -98,7 +98,9 @@ class App
     public function getStaticPageDir(): string
     {
         if (!$this->pageDir) {
-            $this->pageDir = preg_replace("/\/$/", '', $this->getConfig('view.view_dir'));
+            $this->pageDir = preg_replace("/\/$/", '', $this->getConfig('view.view_dir', 'views'));
+            $this->pageDir .= "/";
+            $this->pageDir .= preg_replace("/\/$/", '', $this->getConfig('view.pages_dir', '/'));
         }
 
         return $this->pageDir;
@@ -123,7 +125,7 @@ class App
     {
 
         $staticPath = $this->getStaticPageDir() . "/" . $page;
-        $pageFile = $this->view->findFile($this->getStaticPageDir() . "/" . $page);
+        $pageFile = $this->view->findFile(realpath($this->getStaticPageDir() . "/" . $page));
 
         if (!$pageFile && $lookInward) {
             $pageFile = $this->view->findFile(dirname(__FILE__) . "/../views/" . $page);

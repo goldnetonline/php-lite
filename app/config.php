@@ -5,7 +5,7 @@
  * File Created: Sunday, 23rd May 2021 8:00:46 pm
  * Author: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
- * Last Modified: Tuesday, 25th January 2022 11:23:29 am
+ * Last Modified: Monday, 31st January 2022 1:36:18 pm
  * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
  * Copyright 2022, CamelCase Technologies Ltd
@@ -32,6 +32,10 @@ return [
 
         // Where all custom twig views are loaded from
         'view_dir' => BASE_DIR . '/views/pages',
+
+        // Where all the route pagea are autoloaded
+        // Relative to view_dir
+        'pages_dir' => 'pages',
 
         // These are extra data attached to all views
         'global_context' => [
