@@ -5,10 +5,10 @@
  * File Created: Sunday, 23rd May 2021 9:47:39 pm
  * Author: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
- * Last Modified: Tuesday, 1st June 2021 10:52:00 am
+ * Last Modified: Monday, 28th February 2022 1:04:40 pm
  * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
- * Copyright 2021, CamelCase Technologies Ltd
+ * Copyright 2022, CamelCase Technologies Ltd
  */
 
 namespace App\Core;
@@ -34,7 +34,7 @@ class View
 
     public function configure()
     {
-        $this->viewDirRoot = $this->app->getConfig('view.view_dir');
+        $this->viewDirRoot = str_replace("/", DIRECTORY_SEPARATOR, $this->app->getConfig('view.view_dir'));
         $this->twigLoader = new FilesystemLoader($this->viewDirRoot);
         $this->twigInstance = new Environment($this->twigLoader, [
             'cache' => $this->cacheRoot,
