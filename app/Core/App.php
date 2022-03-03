@@ -5,7 +5,7 @@
  * File Created: Sunday, 23rd May 2021 7:03:50 pm
  * Author: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
- * Last Modified: Monday, 28th February 2022 1:04:48 pm
+ * Last Modified: Thursday, 3rd March 2022 6:05:25 pm
  * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
  * Copyright 2022, CamelCase Technologies Ltd
@@ -125,7 +125,7 @@ class App
     {
 
         $staticPath = $this->getStaticPageDir() . "/" . $page;
-        $pageFile = $this->view->findFile(realpath($this->getStaticPageDir() . "/" . $page));
+        $pageFile = $this->view->findFile($staticPath);
 
         if (!$pageFile && $lookInward) {
             $pageFile = $this->view->findFile(dirname(__FILE__) . "/../views/" . $page);
