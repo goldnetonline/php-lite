@@ -5,7 +5,7 @@
  * File Created: Sunday, 23rd May 2021 8:00:46 pm
  * Author: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
- * Last Modified: Monday, 28th February 2022 1:09:27 pm
+ * Last Modified: Friday, 4th March 2022 2:46:22 pm
  * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
  * -----
  * Copyright 2022, CamelCase Technologies Ltd
@@ -31,7 +31,7 @@ return [
         'homepage' => 'home.html',
 
         // Where all custom twig views are loaded from
-        'view_dir' => BASE_DIR . '/views',
+        'view_dir' => BASE_DIR . DIRECTORY_SEPARATOR . 'views',
 
         // Where all the route pagea are autoloaded
         // Relative to view_dir
