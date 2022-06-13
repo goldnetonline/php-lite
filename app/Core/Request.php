@@ -45,7 +45,7 @@ class Request
         $this->https = isset($this->server['HTTPS']) && $this->server['HTTPS'] === 'on' ? true : false;
         $this->scheme = $this->https ? "https" : "http";
         $this->port = $this->server['SERVER_PORT'];
-        $this->domain = $this->scheme . "//" . $this->host;
+        $this->domain = $this->scheme . "://" . $this->host;
         if (!in_array($this->port, ['80', '443'])) {
             $this->domain .= ":{$this->port}";
         }
