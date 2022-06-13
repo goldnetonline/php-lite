@@ -1,16 +1,4 @@
 <?php
-/*
- * File: RouteManager.php
- * Project: Core
- * File Created: Tuesday, 1st June 2021 8:52:42 am
- * Author: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Last Modified: Tuesday, 1st June 2021 10:11:38 am
- * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Copyright 2021, CamelCase Technologies Ltd
- */
-
 namespace App\Core;
 
 use App\Core\Traits\Singleton;

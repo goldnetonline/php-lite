@@ -1,16 +1,4 @@
 <?php
-/*
- * File: App.php
- * Project: Core
- * File Created: Sunday, 23rd May 2021 7:03:50 pm
- * Author: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Last Modified: Friday, 4th March 2022 2:45:55 pm
- * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Copyright 2022, CamelCase Technologies Ltd
- */
-
 namespace App\Core;
 
 use App\Core\Traits\Singleton;

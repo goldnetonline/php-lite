@@ -1,16 +1,4 @@
 <?php
-/*
- * File: BaseMailDriver.php
- * Project: Mail
- * File Created: Tuesday, 1st June 2021 10:29:55 am
- * Author: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Last Modified: Tuesday, 1st June 2021 11:57:27 am
- * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Copyright 2021, CamelCase Technologies Ltd
- */
-
 namespace App\Core\Mail;
 
 use App\Core\Contracts\Mailer;

@@ -1,16 +1,4 @@
 <?php
-/*
- * File: Mailgun.php
- * Project: Mail
- * File Created: Tuesday, 1st June 2021 12:52:13 pm
- * Author: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Last Modified: Tuesday, 1st June 2021 1:36:08 pm
- * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Copyright 2021, CamelCase Technologies Ltd
- */
-
 namespace App\Core\Mail;
 
 use Mailgun\Mailgun as MailgunEngine;

@@ -1,16 +1,4 @@
 <?php
-/*
- * File: BaseController.php
- * Project: core
- * File Created: Sunday, 23rd May 2021 11:57:45 pm
- * Author: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Last Modified: Monday, 24th May 2021 1:57:18 am
- * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Copyright 2021, CamelCase Technologies Ltd
- */
-
 namespace App\Core;
 
 /**

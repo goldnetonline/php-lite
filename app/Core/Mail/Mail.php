@@ -1,16 +1,4 @@
 <?php
-/*
- * File: Mail.php
- * Project: Mail
- * File Created: Tuesday, 1st June 2021 9:49:28 am
- * Author: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Last Modified: Tuesday, 1st June 2021 11:59:02 am
- * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Copyright 2021, CamelCase Technologies Ltd
- */
-
 namespace App\Core\Mail;
 
 use App\Core\App;

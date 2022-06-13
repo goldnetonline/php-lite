@@ -1,16 +1,4 @@
 <?php
-/*
- * File: Mailer.php
- * Project: Contracts
- * File Created: Tuesday, 1st June 2021 9:50:00 am
- * Author: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Last Modified: Tuesday, 1st June 2021 10:04:35 am
- * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Copyright 2021, CamelCase Technologies Ltd
- */
-
 namespace App\Core\Contracts;
 
 interface Mailer

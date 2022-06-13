@@ -1,19 +1,5 @@
 <?php
-/*
- * File: helpers.php
- * Project: app
- * File Created: Sunday, 23rd May 2021 7:45:39 pm
- * Author: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Last Modified: Monday, 24th May 2021 2:29:07 am
- * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Copyright 2021, CamelCase Technologies Ltd
- */
-
 use App\Core\App;
-
-$app = App::getInstance();
 
 /**
  * Read from env variable
@@ -35,12 +21,52 @@ if (!function_exists('env')) {
 }
 
 /**
+ * Root application instance
+ */
+if (!function_exists('app')) {
+    function app()
+    {
+        return App::getInstance();
+    }
+}
+
+/**
+ * Root request instance
+ */
+if (!function_exists('request')) {
+    function request()
+    {
+        return App::getInstance()->request;
+    }
+}
+
+/**
+ * Root response instance
+ */
+if (!function_exists('response')) {
+    function response()
+    {
+        return App::getInstance()->response;
+    }
+}
+
+/**
+ * Root view instance
+ */
+if (!function_exists('view')) {
+    function view()
+    {
+        return App::getInstance()->view;
+    }
+}
+
+/**
  * Read from the config file
  */
 if (!function_exists('config')) {
     function config($conf, $default = null)
     {
-        return $app->getConfig($conf, $default = null);
+        return App::getInstance()->getConfig($conf, $default = null);
     }
 }
 
@@ -50,7 +76,7 @@ if (!function_exists('config')) {
 if (!function_exists('input')) {
     function input($key = null, $default = null)
     {
-        return $app->request->input($key, $default);
+        return App::getInstance()->request->input($key, $default);
     }
 }
 

@@ -1,18 +1,7 @@
 <?php
-/*
- * File: View.php
- * Project: Core
- * File Created: Sunday, 23rd May 2021 9:47:39 pm
- * Author: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Last Modified: Monday, 28th February 2022 1:04:40 pm
- * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Copyright 2022, CamelCase Technologies Ltd
- */
-
 namespace App\Core;
 
+use App\Core\Extensions\TwigExtensions;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -40,6 +29,8 @@ class View
             'cache' => $this->cacheRoot,
             'auto_reload' => true,
         ]);
+
+        $this->twigInstance->addExtension(new TwigExtensions($this->twigLoader));
 
     }
 

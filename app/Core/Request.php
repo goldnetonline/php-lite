@@ -1,16 +1,4 @@
 <?php
-/*
- * File: Request.php
- * Project: core
- * File Created: Sunday, 23rd May 2021 8:22:46 pm
- * Author: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Last Modified: Tuesday, 1st June 2021 9:37:28 am
- * Modified By: Temitayo Bodunrin (temitayo@camelcase.co)
- * -----
- * Copyright 2021, CamelCase Technologies Ltd
- */
-
 namespace App\Core;
 
 use App\Core\Traits\Singleton;
@@ -55,7 +43,12 @@ class Request
 
         $this->host = $this->server['HTTP_HOST'];
         $this->https = isset($this->server['HTTPS']) && $this->server['HTTPS'] === 'on' ? true : false;
+        $this->scheme = $this->https ? "https" : "http";
         $this->port = $this->server['SERVER_PORT'];
+        $this->domain = $this->scheme . "//" . $this->host;
+        if (!in_array($this->port, ['80', '443'])) {
+            $this->domain .= ":{$this->port}";
+        }
         $this->serverIp = $this->server['SERVER_ADDR'];
         $this->requestIp = $this->server['REMOTE_ADDR'];
         $this->method = $this->server['REQUEST_METHOD'];
