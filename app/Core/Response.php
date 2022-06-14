@@ -67,6 +67,9 @@ class Response
      */
     public function send()
     {
+        if ($this->responseText && !config('app.debug') && $this->contentType == 'text/html') {
+            $this->responseText = \preg_replace("/<!--(.*?)-->|\s\B|\n/", "", $this->responseText);
+        }
         http_response_code($this->code);
         header("Content-Type: " . $this->contentType);
         $this->responseBuffer = ob_start();
