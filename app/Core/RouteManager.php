@@ -7,6 +7,8 @@ class RouteManager
 {
     use Singleton;
 
+    public $app;
+
     const ALLOWED_METHODS = [
         'GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTION',
     ];

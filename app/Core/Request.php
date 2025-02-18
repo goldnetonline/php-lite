@@ -17,6 +17,8 @@ class Request
     public $https;
     public $port;
     public $serverIp;
+    public $scheme;
+    public $domain;
     public $requestIp;
     public $method;
     public $rawQueryString;
