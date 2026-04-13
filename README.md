@@ -7,10 +7,22 @@ Starter project repository for creating new PHP Lite applications.
 
 ## Quick Start
 
-Create a new project using Composer:
+### Option 1: From Packagist (Recommended)
 
 ```bash
 composer create-project goldnetonline/php-lite my-site
+cd my-site
+make env-setup
+make install
+php -S localhost:8000
+```
+
+### Option 2: From GitHub
+
+Clone the repository directly:
+
+```bash
+git clone https://github.com/goldnetonline/php-lite.git my-site
 cd my-site
 make env-setup
 make install
