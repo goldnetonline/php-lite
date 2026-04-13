@@ -137,58 +137,6 @@
             transform: translateY(-2px);
         }
 
-        .features {
-            padding: 6rem 0;
-            border-top: 1px solid rgba(6, 182, 212, 0.1);
-        }
-
-        .features h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 4rem;
-            background: linear-gradient(135deg, #F1F5F9 0%, #CBD5E1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(6, 182, 212, 0.2);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            border-color: rgba(6, 182, 212, 0.5);
-            background: rgba(15, 23, 42, 0.9);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            color: #06B6D4;
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-
-        .feature-card p {
-            color: #94A3B8;
-            font-size: 0.95rem;
-        }
-
         footer {
             padding: 3rem 0;
             border-top: 1px solid rgba(6, 182, 212, 0.1);
@@ -236,7 +184,6 @@
             <div class="header-content">
                 <div class="logo">PHP Lite</div>
                 <nav>
-                    <a href="#features">Features</a>
                     <a href="https://github.com/goldnetonline/php-lite" target="_blank">GitHub</a>
                 </nav>
             </div>
@@ -251,42 +198,6 @@
                 <div class="cta-buttons">
                     <button class="btn btn-primary" onclick="alert('Get started with: composer create-project goldnetonline/php-lite my-site')">Get Started</button>
                     <a href="https://github.com/goldnetonline/php-lite" target="_blank" class="btn btn-secondary">View on GitHub</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="features" class="features">
-            <h2>Why PHP Lite?</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Blazing Fast</h3>
-                    <p>Minimal overhead. No unnecessary dependencies. Pure PHP performance.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Simple & Clean</h3>
-                    <p>Intuitive routing, clear request/response lifecycle, easy to understand.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🛠️</div>
-                    <h3>Modern PHP</h3>
-                    <p>Built for PHP 8.4+. Uses latest language features and best practices.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📧</div>
-                    <h3>Mail Ready</h3>
-                    <p>SMTP and Mailgun drivers included. Send emails with ease.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3>Twig Templates</h3>
-                    <p>Powerful template engine for beautiful, maintainable views.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Production Ready</h3>
-                    <p>Error handling, debugging tools, and maintenance mode included.</p>
                 </div>
             </div>
         </section>
