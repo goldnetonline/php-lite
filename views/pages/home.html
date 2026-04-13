@@ -13,7 +13,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+            background: linear-gradient(135deg, #1a1410 0%, #2d1f16 50%, #1a1410 100%);
             color: #E2E8F0;
             line-height: 1.6;
             min-height: 100vh;
@@ -23,10 +23,10 @@
 
         header {
             padding: 2rem 0;
-            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            border-bottom: 1px solid rgba(255, 140, 0, 0.1);
             position: sticky;
             top: 0;
-            background: rgba(30, 27, 75, 0.95);
+            background: rgba(26, 20, 16, 0.95);
             backdrop-filter: blur(10px);
             z-index: 100;
         }
@@ -46,7 +46,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #6366F1, #8B5CF6);
+            background: linear-gradient(135deg, #FF8C00, #FFA500);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -62,7 +62,7 @@
         }
 
         nav a:hover {
-            color: #8B5CF6;
+            color: #FFA500;
         }
 
         .hero {
@@ -116,30 +116,30 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #6366F1, #8B5CF6);
+            background: linear-gradient(135deg, #FF8C00, #FFA500);
             color: #ffffff;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 15px 40px rgba(255, 140, 0, 0.4);
         }
 
         .btn-secondary {
-            background: rgba(99, 102, 241, 0.1);
-            color: #8B5CF6;
-            border: 2px solid #8B5CF6;
+            background: rgba(255, 140, 0, 0.1);
+            color: #FFA500;
+            border: 2px solid #FFA500;
         }
 
         .btn-secondary:hover {
-            background: rgba(99, 102, 241, 0.2);
+            background: rgba(255, 140, 0, 0.2);
             transform: translateY(-2px);
         }
 
         footer {
             padding: 3rem 0;
-            border-top: 1px solid rgba(99, 102, 241, 0.1);
+            border-top: 1px solid rgba(255, 140, 0, 0.1);
             text-align: center;
             color: #64748B;
             margin-top: auto;
@@ -150,14 +150,14 @@
         }
 
         .accent {
-            color: #8B5CF6;
+            color: #FFA500;
         }
 
         .features {
             padding: 6rem 0;
-            background: rgba(99, 102, 241, 0.05);
-            border-top: 1px solid rgba(99, 102, 241, 0.1);
-            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+            background: rgba(255, 140, 0, 0.05);
+            border-top: 1px solid rgba(255, 140, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 140, 0, 0.1);
         }
 
         .features-grid {
@@ -168,22 +168,22 @@
 
         .feature {
             padding: 2rem;
-            background: rgba(99, 102, 241, 0.05);
-            border: 1px solid rgba(99, 102, 241, 0.1);
+            background: rgba(255, 140, 0, 0.05);
+            border: 1px solid rgba(255, 140, 0, 0.1);
             border-radius: 8px;
             transition: all 0.3s;
         }
 
         .feature:hover {
-            border-color: rgba(139, 92, 246, 0.3);
-            background: rgba(139, 92, 246, 0.1);
+            border-color: rgba(255, 165, 0, 0.3);
+            background: rgba(255, 165, 0, 0.1);
             transform: translateY(-4px);
         }
 
         .feature h3 {
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
-            color: #8B5CF6;
+            color: #FFA500;
         }
 
         .feature p {
@@ -246,11 +246,11 @@
                     <svg width="120" height="120" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#6366F1;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+                                <stop offset="0%" style="stop-color:#FF8C00;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
                             </linearGradient>
                         </defs>
-                        <text x="100" y="145" font-size="120" font-weight="bold" font-family="monospace" fill="url(#logoGradient)" text-anchor="middle" dominant-baseline="middle">PHP</text>
+                        <polygon points="100,20 60,100 90,100 70,180 140,80 110,80" fill="url(#logoGradient)" stroke="url(#logoGradient)" stroke-width="2" stroke-linejoin="round"/>
                     </svg>
                 </div>
                 <h1>Lightweight PHP <span class="accent">Web Framework</span></h1>
