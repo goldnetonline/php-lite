@@ -52,12 +52,12 @@ If the core package is published to GitHub Packages, configure authentication in
 
 ```json
 {
-  "repositories": {
-    "github-packages": {
-      "type": "composer",
-      "url": "https://composer.github.com/goldnetonline"
+    "repositories": {
+        "github-packages": {
+            "type": "composer",
+            "url": "https://composer.github.com/goldnetonline"
+        }
     }
-  }
 }
 ```
 
@@ -70,10 +70,10 @@ Then update your dependency constraints accordingly.
 1. Ensure all tests pass: `make qa`
 2. Merge changes to `main`
 3. Create and push a semantic version tag:
-   ```bash
-   git tag v1.0.0
-   git push origin v1.0.0
-   ```
+    ```bash
+    git tag v1.0.0
+    git push origin v1.0.0
+    ```
 4. Wait for the `release-packages` workflow to complete
 
 ### Release Artifacts
@@ -88,9 +88,9 @@ To enable automatic Packagist updates on release:
 
 1. Generate a Packagist API token at [api.packagist.org](https://packagist.org/profile/edit)
 2. Add as GitHub secret `PHP_LITE_PACKAGIST_WEBHOOK_URL`:
-   ```
-   https://packagist.org/api/update-package?username=YOUR_USERNAME&apiToken=YOUR_TOKEN
-   ```
+    ```
+    https://packagist.org/api/update-package?username=YOUR_USERNAME&apiToken=YOUR_TOKEN
+    ```
 3. Releases will trigger automatic updates
 
 ## Distribution & Exclusions
