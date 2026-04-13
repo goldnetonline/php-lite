@@ -39,7 +39,7 @@ php -S localhost:8000
 ## Features
 
 - **⚡ Blazing Fast** - Minimal overhead, pure PHP performance
-- **🎯 Simple & Clean** - Intuitive routing and clear request/response lifecycle  
+- **🎯 Simple & Clean** - Intuitive routing and clear request/response lifecycle
 - **🛠️ Modern PHP** - Built for PHP 8.4+ with latest language features
 - **📧 Mail Ready** - SMTP and Mailgun drivers included
 - **🎨 Twig Templates** - Powerful template engine for beautiful views
