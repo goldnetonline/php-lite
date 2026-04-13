@@ -1,0 +1,10 @@
+.DS_Store
+vendor/
+.env
+.env.local
+.env.*.local
+node_modules/
+*.zip
+.cache/
+.vscode/
+dist/

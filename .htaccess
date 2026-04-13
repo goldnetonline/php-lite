@@ -1,0 +1,34 @@
+<IfModule mod_rewrite.c>
+
+ <IfModule mod_negotiation.c>
+    Options -MultiViews
+</IfModule>
+
+RewriteEngine On
+
+RewriteRule ^bootstrap/.* index.php [L,NC]
+RewriteRule ^app/.* index.php [L,NC]
+RewriteRule ^vendor/.* index.php [L,NC]
+RewriteRule ^.cache/.* index.php [L,NC]
+
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_FILENAME} !/.well-known/*
+RewriteCond %{REQUEST_FILENAME} !/favicon.ico
+RewriteCond %{REQUEST_FILENAME} !/assets/.*
+RewriteCond %{REQUEST_FILENAME} !/content/.*
+RewriteRule !^index.php index.php [L,NC]
+
+##
+## Block all PHP files, except index
+##
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_FILENAME} \.php$
+RewriteRule !^index.php index.php [L,NC]
+
+##
+## Standard routes
+##
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+
+</IfModule>

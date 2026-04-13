@@ -1,0 +1,29 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+
+  - repo: local
+    hooks:
+      - id: composer-validate
+        name: Composer validate
+        language: system
+        entry: bash -lc 'composer validate --strict'
+        pass_filenames: false
+
+      - id: php-checks
+        name: PHP lint and tests
+        language: system
+        entry: bash -lc 'find app tests -type f -name "*.php" -print0 | xargs -0 -n1 php -l && composer test'
+        pass_filenames: false
+
+      - id: env-template-check
+        name: Ensure .env.example exists
+        language: system
+        entry: bash -lc 'test -f .env.example'
+        pass_filenames: false
