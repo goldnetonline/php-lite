@@ -13,7 +13,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #0F172A 0%, #1A1F35 50%, #0F172A 100%);
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
             color: #E2E8F0;
             line-height: 1.6;
             min-height: 100vh;
@@ -23,10 +23,10 @@
 
         header {
             padding: 2rem 0;
-            border-bottom: 1px solid rgba(6, 182, 212, 0.1);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
             position: sticky;
             top: 0;
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(30, 27, 75, 0.95);
             backdrop-filter: blur(10px);
             z-index: 100;
         }
@@ -46,7 +46,7 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #06B6D4, #0EA5E9);
+            background: linear-gradient(135deg, #6366F1, #8B5CF6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -62,7 +62,7 @@
         }
 
         nav a:hover {
-            color: #06B6D4;
+            color: #8B5CF6;
         }
 
         .hero {
@@ -116,30 +116,30 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #06B6D4, #0EA5E9);
-            color: #0F172A;
-            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.3);
+            background: linear-gradient(135deg, #6366F1, #8B5CF6);
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.4);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
         }
 
         .btn-secondary {
-            background: rgba(6, 182, 212, 0.1);
-            color: #06B6D4;
-            border: 2px solid #06B6D4;
+            background: rgba(99, 102, 241, 0.1);
+            color: #8B5CF6;
+            border: 2px solid #8B5CF6;
         }
 
         .btn-secondary:hover {
-            background: rgba(6, 182, 212, 0.2);
+            background: rgba(99, 102, 241, 0.2);
             transform: translateY(-2px);
         }
 
         footer {
             padding: 3rem 0;
-            border-top: 1px solid rgba(6, 182, 212, 0.1);
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
             text-align: center;
             color: #64748B;
             margin-top: auto;
@@ -150,7 +150,56 @@
         }
 
         .accent {
-            color: #06B6D4;
+            color: #8B5CF6;
+        }
+
+        .features {
+            padding: 6rem 0;
+            background: rgba(99, 102, 241, 0.05);
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature {
+            padding: 2rem;
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .feature:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            background: rgba(139, 92, 246, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .feature h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #8B5CF6;
+        }
+
+        .feature p {
+            color: #94A3B8;
+            font-size: 0.95rem;
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo-container svg {
+            width: 120px;
+            height: 120px;
         }
 
         @media (max-width: 768px) {
@@ -193,11 +242,54 @@
     <div class="container">
         <section class="hero">
             <div>
+                <div class="logo-container">
+                    <svg width="120" height="120" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#6366F1;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <text x="100" y="145" font-size="120" font-weight="bold" font-family="monospace" fill="url(#logoGradient)" text-anchor="middle" dominant-baseline="middle">PHP</text>
+                    </svg>
+                </div>
                 <h1>Lightweight PHP <span class="accent">Web Framework</span></h1>
                 <p>Fast, elegant, and simple. Build modern PHP applications without the complexity.</p>
                 <div class="cta-buttons">
                     <button class="btn btn-primary" onclick="alert('Get started with: composer create-project goldnetonline/php-lite my-site')">Get Started</button>
                     <a href="https://github.com/goldnetonline/php-lite" target="_blank" class="btn btn-secondary">View on GitHub</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2rem; margin-bottom: 3rem; color: #F1F5F9;">Why PHP Lite?</h2>
+                <div class="features-grid">
+                    <div class="feature">
+                        <h3>⚡ Blazing Fast</h3>
+                        <p>Minimal overhead with pure PHP performance. No unnecessary bloat, just what you need.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🎯 Simple & Clean</h3>
+                        <p>Intuitive routing and a clear request/response lifecycle that's easy to understand.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🛠️ Modern PHP</h3>
+                        <p>Built for PHP 8.4+ with the latest language features and best practices.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>📧 Mail Ready</h3>
+                        <p>SMTP and Mailgun drivers included for sending emails out of the box.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🎨 Twig Templates</h3>
+                        <p>Powerful template engine for building beautiful, maintainable views.</p>
+                    </div>
+                    <div class="feature">
+                        <h3>🚀 Production Ready</h3>
+                        <p>Built-in error handling, debugging tools, and maintenance mode support.</p>
+                    </div>
                 </div>
             </div>
         </section>
