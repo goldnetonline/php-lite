@@ -1,4 +1,4 @@
-# PHP Lite Starter
+# PHP Lite
 
 ![Tests](https://github.com/goldnetonline/php-lite/actions/workflows/tests.yml/badge.svg)
 ![Release](https://github.com/goldnetonline/php-lite/actions/workflows/release-packages.yml/badge.svg)
