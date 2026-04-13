@@ -289,16 +289,16 @@
         },
         {
             "name": "goldnetonline/php-lite-core",
-            "version": "v1.0.0",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/goldnetonline/php-lite-core.git",
-                "reference": "edade30aaca8641305e1dd383504ca7c24dd593f"
+                "reference": "10139024d39ad123a51a76c1f0bc893cdc4cebaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/goldnetonline/php-lite-core/zipball/edade30aaca8641305e1dd383504ca7c24dd593f",
-                "reference": "edade30aaca8641305e1dd383504ca7c24dd593f",
+                "url": "https://api.github.com/repos/goldnetonline/php-lite-core/zipball/10139024d39ad123a51a76c1f0bc893cdc4cebaf",
+                "reference": "10139024d39ad123a51a76c1f0bc893cdc4cebaf",
                 "shasum": ""
             },
             "require": {
@@ -331,10 +331,10 @@
             ],
             "description": "Lean core runtime for php-lite websites.",
             "support": {
-                "source": "https://github.com/goldnetonline/php-lite-core/tree/v1.0.0",
+                "source": "https://github.com/goldnetonline/php-lite-core/tree/v1.0.2",
                 "issues": "https://github.com/goldnetonline/php-lite-core/issues"
             },
-            "time": "2026-04-13T15:21:56+00:00"
+            "time": "2026-04-13T16:57:16+00:00"
         },
         {
             "name": "graham-campbell/result-type",
