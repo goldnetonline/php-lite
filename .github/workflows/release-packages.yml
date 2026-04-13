@@ -49,8 +49,3 @@ jobs:
                   files: |
                       dist/php-lite-${{ github.sha }}.tar.gz
                   generate_release_notes: true
-            - name: Trigger Packagist update
-              if: env.PACKAGIST_WEBHOOK_URL != ''
-              env:
-                  PACKAGIST_WEBHOOK_URL: ${{ secrets.PHP_LITE_PACKAGIST_WEBHOOK_URL }}
-              run: curl -fsSL -X POST "$PACKAGIST_WEBHOOK_URL"
