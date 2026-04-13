@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7f09b7f47b7199e45d94026ec29b5945",
+    "content-hash": "af62c436802613397040feade220e199",
     "packages": [
         {
             "name": "clue/stream-filter",
@@ -289,16 +289,16 @@
         },
         {
             "name": "goldnetonline/php-lite-core",
-            "version": "dev-main",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/goldnetonline/php-lite-core.git",
-                "reference": "21eb3d1e50bde38f3ed8cede95d6922e45f54710"
+                "reference": "edade30aaca8641305e1dd383504ca7c24dd593f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/goldnetonline/php-lite-core/zipball/21eb3d1e50bde38f3ed8cede95d6922e45f54710",
-                "reference": "21eb3d1e50bde38f3ed8cede95d6922e45f54710",
+                "url": "https://api.github.com/repos/goldnetonline/php-lite-core/zipball/edade30aaca8641305e1dd383504ca7c24dd593f",
+                "reference": "edade30aaca8641305e1dd383504ca7c24dd593f",
                 "shasum": ""
             },
             "require": {
@@ -312,7 +312,6 @@
             "require-dev": {
                 "phpunit/phpunit": "^12.0"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -332,10 +331,10 @@
             ],
             "description": "Lean core runtime for php-lite websites.",
             "support": {
-                "source": "https://github.com/goldnetonline/php-lite-core/tree/main",
+                "source": "https://github.com/goldnetonline/php-lite-core/tree/v1.0.0",
                 "issues": "https://github.com/goldnetonline/php-lite-core/issues"
             },
-            "time": "2026-04-13T14:38:03+00:00"
+            "time": "2026-04-13T15:21:56+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -4189,9 +4188,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "goldnetonline/php-lite-core": 20
-    },
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
